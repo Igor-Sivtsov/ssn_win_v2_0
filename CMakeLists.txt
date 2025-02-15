@@ -16,7 +16,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SerialPort)
 
 add_executable(ssn_win_v2_0
     main.cpp
-    main.h
     console.h
     serial_port.h serial_port.cpp
 
