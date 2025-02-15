@@ -1,5 +1,10 @@
-#include <QCoreApplication>
-#include <QtSerialPort/QSerialPortInfo>
+#include <QString>
+
+#include <conio.h>
+#include <iostream>
+#include <regex>
+
+#include "console.h"
 #include "serial_port.h"
 
 enum class text_color
