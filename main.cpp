@@ -16,8 +16,31 @@ enum class text_color
 };
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    console cons(CP_UTF8);
 
-    return a.exec();
     serial_port port;
+
+    const auto color_print = [&](const std::string& text, text_color color) -> void
+    {
+        SetConsoleTextAttribute(cons.output(), static_cast<unsigned short>(color));
+        std::cout << text;
+        SetConsoleTextAttribute(cons.output(), static_cast<unsigned short>(text_color::white));
+    };
+
+    const auto exit_fun = [&]() -> void
+    {
+        port.close_();
+        color_print("\n" "Для завершения нажмите любую клавишу... ", text_color::white);
+        char ch = getch();
+    };
+
+    const auto is_match = [&](const std::string& str) -> bool
+    {
+        if(not std::regex_match(str, pattern))
+        {
+            color_print("Неверный формат серийного номера, попробуйте еще раз.\n", text_color::red);
+            return false;
+        }
+        return true;
+    };
 }
