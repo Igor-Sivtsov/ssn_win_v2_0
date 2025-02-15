@@ -15,8 +15,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SerialPort)
 
 add_executable(ssn_win_v2_0
-  main.cpp
-  console.h
+    main.cpp
+    main.h
+    console.h
+    serial_port.h serial_port.cpp
+
 )
 target_link_libraries(ssn_win_v2_0 Qt${QT_VERSION_MAJOR}::Core)
 
